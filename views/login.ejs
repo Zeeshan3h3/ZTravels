@@ -1,0 +1,36 @@
+<% layout("layouts/boilerplates.ejs") %>
+<div class="row">
+<div class="col-8 offset-2">
+<body>
+    <br>
+    <h1>Log in to ZTravel:</h1>
+    <br>
+    
+    <form method="POST" action="/login" class="needs-validation" novalidate >
+       
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input class="form-control" name="username" placeholder="Write your unique user name " type="text" required>
+            <div class="invalid-feedback">Enter Valid username</div>
+        </div>
+        
+
+        
+        
+
+        <div class="mb-3" >
+            <label for="password" class="form-label">Password : </label>
+            <input name="password"   placeholder="Enter An unique password " type="text" class="form-control" required>
+            <div class="invalid-feedback">Enter Valid password</div>
+
+        </div>
+        <br><br>
+        
+        
+        
+        <button class="btn btn-success">Login</button>
+        
+    </form>
+</body>
+</div>
+</div>

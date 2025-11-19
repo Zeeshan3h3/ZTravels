@@ -1,0 +1,163 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    
+  
+
+
+
+}
+.container {
+    flex:1;
+}
+
+
+.btn-age {
+    background-color:rgba(21, 255, 0, 0.852) !important;
+    border: none !important;
+    color : black !important ;
+}
+.fa-compass {
+    color :  #ff3344;
+    font-size : 2rem
+
+}
+
+.f-social {
+    width: 100%;
+    text-align:center;
+    padding: 0.5rem;
+
+}
+.p {
+   
+    text-align:center;
+    
+    text-decoration:none;
+    margin:4px;
+}
+.p:hover {
+    
+    text-decoration:underline;
+    color:black;
+}
+.t {
+    
+    text-align:center;
+    
+    text-decoration:none;
+    margin:4px;
+}
+.t:hover {
+    color:black;
+    
+    text-decoration:underline ;
+}
+
+
+
+.navbar {
+    height : 5rem;
+    background-color : white;
+}
+.nav-link {
+    color :  black !important;
+}
+.f-info {
+
+    display:flex;
+    height :  5rem;
+    flex-direction :wrap;
+    background-color: #d3d3d3;
+    flex-wrap: wrap ;
+    justify-content: center;
+    align-items: space-evenly;
+    width: 100%;
+
+}
+
+.f-social {
+    font-size : 2rem;
+}
+.fa-square-facebook:hover {
+    font-size : 3rem;
+    color: #1877F2;
+    transition :ease-in 0.2s;
+}
+.fa-linkedin:hover {
+    font-size : 3rem;
+    color: #0077B5;
+    transition :ease-in 0.2s;
+    
+}
+.fa-square-youtube:hover {
+    font-size : 3rem;
+    color: #FF0000;
+    transition :ease-in 0.2s;
+}
+
+
+.f-head {
+    padding: 0.5rem;
+    background-color:#d3d3d3; 
+}
+.card {
+    border: none !important;
+    margin-bottom: 1rem;
+}
+.card2 {
+    border: 0.1px solid black !important;
+    border-radius : 1rem !important;
+}
+
+
+.card-img-top {
+    border-radius : 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.link-dec {
+    text-decoration: none;
+
+
+}
+.card-img-overlay {
+    opacity:0;
+
+
+
+}
+.card-img-overlay:hover {
+    opacity:0.2;
+    background-color: white;
+    transition :ease-in 0.1s;
+
+
+}
+.btns {
+    display: flex;
+
+}
+.edit-btn {
+    background-color: #ff3344 !important;
+    border: none !important;
+}
+
+.sortfilters {
+    display : flex;
+    margin: 1rem;
+}
+.fa-solid {
+    font-size: 20px;
+
+}
+
+.filters {
+    margin : 2px;
+}

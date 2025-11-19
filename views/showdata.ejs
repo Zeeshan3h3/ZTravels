@@ -1,0 +1,122 @@
+<% layout("layouts/boilerplates.ejs") %>
+
+<body>
+    
+    <div class="row mt-4 mb-5 ">
+        <h1 class="offset-3 mb-2"><%= list.title %></h1>
+
+
+        <div class="card col-6 offset-3">
+        <img src="<%= list.image.url %>" class="card-img-top show-img" alt="...">
+        <div class="card-body">
+            <p class="card-text">
+                Post By :<p><b><%= list.owner ? list.owner.username : "unknown" %></b></p>
+
+                Title:<b><%= list.title %></b> 
+
+                <br>
+                Description : <%= list.description %>
+                <br>
+                Price: &#8377; <b><%= list.price.toLocaleString("en-IN") %></b><p class="gst-tax"> GST Charge :  <b>&#8377;<%= (18 * (thing.price / 100)).toFixed(2) %></b> (18% GST )</p>
+                <br>
+                Location:<b> <%= list.location %></b>
+                <br>
+               Country: <b> <%= list.country %></b></p>
+        </div>
+    </div>
+
+    </div>
+    
+    
+   
+   <% if(currUser && list.owner && currUser._id && (currUser._id.equals(list.owner._id || list.owner))) { %>
+<div class="btns">
+
+    <a href="/listings/<%=list._id%>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
+    <br><br>
+    <form method="POST" action="/listings/<%= list._id %>/?_method=DELETE" >
+        <button class="btn btn-dark offset-4">delete</button>
+    </form>
+
+ 
+    <% } %>
+
+
+
+
+</div>
+        <br>
+      <div class="offset-3 mb-4" >
+        <% if(currUser) { %>
+        <h4>Leave A Review For The Post....</h4>
+        <form action="/listings/<%= list._id %>/reviews" method="POST" class="needs-validation" novalidate>
+
+            <div class="mb-3 mt-4 ">
+            <label for="rating" class="form-label">Rating : </label>
+            <fieldset class="starability-coinFlip">
+                
+                
+                
+                <input type="radio" id="first-rate1" name="review[ratings]" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="review[ratings]" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="review[ratings]" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="review[ratings]" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="review[ratings]" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+               
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="comment" class="form-control" id="validationCustom03">Comment : </label>
+                <textarea name="review[comment]" id="review" cols="20" rows="5" class="form-control" required></textarea>
+                <div class="invalid-feedback">
+                    Please provide a valid Comment......
+                </div>
+            </div>
+            <button class="btn btn-dark offset-4 edit-btn">Submit</button>
+        </form>
+        <% } %>
+        
+        <div class="row">
+            <h5><b>All Reviews</b></h5>
+             <% for(re of list.reviews) { %>
+            <div class="card2 col-5 mb-3 ms-2">
+                <div class="card-body">
+                    <p class="card-text"><b>@<%= re.author.username %></b></p>
+                    <p class="card-text"><%= re.comment %></p>
+                    <p class="card-text"><%= re.ratings %>&starf;</p>
+                    <p class="starability-result card-text" data-rating="<%= re.ratings %>">
+                            
+                        </p>
+            
+                </div>
+               <% if (currUser && re.author && currUser._id.equals(re.author._id)) { %>
+                <form class="mb-3" method="POST" action="/listings/<%= list._id %>/reviews/<%= re._id %>?_method=DELETE">
+                    <button class="btn btn-outline-dark btn-sml">Delete</button>
+
+                </form>
+                <% } %>
+                
+
+               
+
+
+            </div>
+            <% } %>
+            
+        </div>
+        
+            
+        
+
+
+
+    </div>
+
+    
+</body>

@@ -1,0 +1,151 @@
+<% layout("layouts/boilerplates.ejs") %>
+<style>
+      
+      .filter {
+        text-align : center;
+        margin : 1rem;
+        opacity : 0.8;
+        align-items: center;
+      }
+      .filter:hover {
+        opacity : 1;
+        transition :cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)
+      }
+      .form-switch {
+        display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+   
+    border-radius: 2rem;
+    width: fit-content;
+    background: white;
+    height :3.5;
+    width :auto;
+    margin-right : 10px;
+             }
+
+.toggle {
+    font-size : 16px;
+
+}
+/* This is for redesigning our toggle button */
+.toggle2 {
+  font-size : 20px;
+}
+
+.gst-tax {
+  display : none;
+}
+</style>
+<body>
+<div id="filters" class="sortfilters">
+
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-fire icon"></i>
+        </div>
+        <p>Trending</p>
+    </div>
+
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-bed icon"></i>
+        </div>
+        <p>Rooms</p>
+    </div>
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-mountain-city"></i>
+        </div>
+        <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-mountain"></i>
+        </div>
+        <p>mountain city</p>
+    </div>
+
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-fort-awesome"></i>
+        </div>
+        <p>Castles</p>
+    </div>
+
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-person-swimming"></i>
+        </div>
+        <p>Pools</p>
+    </div>
+
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-campground"></i>
+        </div>
+        <p>Campaign</p>
+    </div>
+
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-cow"></i>
+        </div>
+        <p>Farms</p>
+    </div>
+
+    <div class="filter">
+        <div>
+            <i class="fa-solid fa-snowflake"></i>
+        </div>
+        <p>Snow</p>
+    </div>
+    
+    <div class="form-check form-switch ms-auto form-check-reverse">
+      <br>
+  <input class="form-check-input toggle2  " type="checkbox" id="flexSwitchCheckDefault" >
+  <label class="form-check-label toggle" for="flexSwitchCheckDefault">Show GST in All Listings</label>
+</div>
+
+
+</div>
+
+    
+    
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+       
+        <% for ( thing of list ) { %>
+           <a href="/listings/<%= thing._id %>" class="link-dec">
+             <div class="card">
+                <img src="<%= thing.image.url %>" class="card-img-top" alt="..." style="height: 18rem;" >
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                <p class="card-text"><b><%= thing.title %></b> <br><br>Price:
+                &#8377; <%= thing.price %>/night  <p class="gst-tax"> GST Charge ::  <b>&#8377;<%= (18 * (thing.price / 100)).toFixed(2) %></b> (18% GST TAX )</p> </p>
+                </div>
+             </div>
+           </a>
+          <% } %>
+        
+    </div> 
+</body>
+      <script>
+        
+        const toggle = document.getElementById("flexSwitchCheckDefault")
+        toggle.addEventListener("click", () => {
+          let tax = document.getElementsByClassName("gst-tax")
+          if(toggle.checked) {
+            for(info of tax) {
+              info.style.display = "inline";
+            }
+            
+          }
+          else {
+            for(info of tax) {
+              info.style.display = "none";
+            }
+          }
+        })
+      </script>
